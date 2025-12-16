@@ -7,7 +7,7 @@ This repository is the template I copy into every new Python-focused project. It
 1. Copy this folder into your new project and initialize git if needed.
 2. Use VS Code with the Dev Containers extension and the Codex plugin to reopen the repo in the provided container (details below).
 3. If you are running locally, create a virtual environment and install the tooling helpers with `pip install -r requirements-lint.txt`.
-4. Follow the workflow described in `programmer-AGENTS.md` (branching rules, TODO handling, script policy).
+4. Follow the workflow described in `AGENTS.md` (branching rules, TODO handling, script policy).
 5. Run the scripts in `scripts/` as you develop:
    * `scripts/lint.sh` before committing
    * `scripts/cleanup.sh` when you want automatic formatting/fixes
@@ -31,7 +31,7 @@ If you add more project-specific tools, update the Dockerfile, features, or post
 | --- | --- |
 | `README.md` | You are here—explains how to use the starter pack. |
 | `requirements-lint.txt` | Minimal Python tooling deps (black, isort, pyright, ruff) that the helper scripts rely on. |
-| `programmer-AGENTS.md` | Compact Git-flow plus Codex-specific operating rules (branch naming, TODO process, script execution policy). |
+| `AGENTS.md` | Compact Git-flow plus Codex-specific operating rules (branch naming, TODO process, script execution policy). |
 | `.codex/perspectives/README.md` | Catalog of Codex perspectives (Security Investigator, Compliance Translator, etc.) with guidance for creating new ones. |
 | `.codex/todo-plan-examples/README.md` | Library of Todo API templates (PCI, ISO, HIPAA, etc.) plus instructions for adapting them to your project. |
 | `.devcontainer/Dockerfile` | Base image (Debian Bullseye) plus compilers/build tools needed by downstream features and Python packages. |
@@ -44,7 +44,7 @@ All helper scripts standardize logging (writing to `logs/` with a shared `run.lo
 
 ## Customizing for a New Project
 
-- Keep `programmer-AGENTS.md` authoritative—update it only when process changes.
+- Keep `AGENTS.md` authoritative—update it only when process changes.
 - Extend `requirements-lint.txt` if you add more tooling; the scripts will fail fast if a required command is missing.
 - Swap out or augment the scripts folder as the new project grows, but keep their entrypoints and logging pattern so Codex automation stays predictable.
 
