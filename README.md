@@ -37,10 +37,8 @@ If you add more project-specific tools, update the Dockerfile, features, or post
 | `.devcontainer/Dockerfile` | Base image (Debian Bullseye) plus compilers/build tools needed by downstream features and Python packages. |
 | `.devcontainer/devcontainer.json` | Dev Containers spec wiring in Python, Pulumi, Docker, and Kubernetes tooling plus VS Code extensions, mounts, and post-start installs. |
 | `.devcontainer/devcontainer.env` | Empty template env file that the dev container loads at runtime; populate with project secrets or overrides. |
-| `scripts/bootstrap-azure-env.sh` | Authenticates/rotates an Azure service principal, updates `.env`, exports `AZURE_*` vars, and logs into Pulumi when configured. |
 | `scripts/cleanup.sh` | Formats Python files with black/isort and runs `pyright --fix` when available, capturing output under `logs/cleanup.log`. |
 | `scripts/lint.sh` | Runs black/isort/ruff/pyright in check-only mode and writes logs to `logs/lint.log`. |
-| `scripts/pulumi-preview.sh` | Sources `.env`, runs `pulumi preview --diff`, and records the run in `preview.log` plus `logs/run.log`. |
 
 All helper scripts standardize logging (writing to `logs/` with a shared `run.log`) so Codex can surface results in status updates.
 

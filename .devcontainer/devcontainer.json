@@ -1,0 +1,61 @@
+{
+	"name": "RENAMEDEVCONTAINERNAME",
+	"build": {
+	  "dockerfile": "./Dockerfile"
+	},
+	"features": {
+	  "ghcr.io/devcontainers/features/python:1": {
+		"installTools": true,
+		"version": "3.12.3",
+		"enableShared": true
+	  },
+	  "ghcr.io/devcontainers-extra/features/pre-commit:2": {
+		"version": "latest"
+	  },
+	  "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+		"moby": true,
+		"installDockerBuildx": true,
+		"version": "latest",
+		"dockerDashComposeVersion": "v2"
+	  },
+	  "ghcr.io/devcontainers-extra/features/pulumi:1": {
+		"bashCompletion": true,
+		"version": "latest"
+	  },
+	  "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+		"version": "latest",
+		"helm": "latest",
+		"minikube": "latest"
+	  }
+	},
+	"mounts": [
+	  "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+	  "source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost,type=bind",
+	  "source=${env:HOME}${env:USERPROFILE}/.kube,target=/home/vscode/.kube,type=bind"
+	],
+	"remoteEnv": {
+	  "SYNC_LOCALHOST_KUBECONFIG": "true"
+	},
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+			"ms-kubernetes-tools.vscode-kubernetes-tools",
+			"ms-python.autopep8",
+			"ms-azuretools.vscode-docker",
+			"ms-python.vscode-pylance",
+			"ms-python.python",
+			"ms-python.debugpy",
+			"redhat.vscode-yaml",
+			"pomdtr.excalidraw-editor",
+			"wayou.vscode-todo-highlight",
+			"njpwerner.autodocstring",
+			"openai.chatgpt"
+		]
+	  }
+	},
+	"runArgs": [
+	  "--env-file",
+	  ".devcontainer/devcontainer.env"
+	],
+	"postStartCommand": "python -m pip install --upgrade pip && pip install -r requirements.txt && pip install -r requirements-lint.txt"
+}
